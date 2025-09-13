@@ -1,6 +1,6 @@
 package com.example.foodapp.models
 
-data class restaurant(
+data class Restaurant(
     val nombre: String,
-    val img: Int // String con Glide
+    val img: String // String con Glide
 )
