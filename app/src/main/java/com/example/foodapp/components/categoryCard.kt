@@ -1,9 +1,11 @@
 package com.example.foodapp.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
@@ -21,9 +23,13 @@ import com.example.foodapp.utils.categoryData
 
 @Composable
 fun CategoryCard(cat: Category) {
-    Column {
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
         Box (
+            contentAlignment = Alignment.Center,
             modifier = Modifier
+                .padding(bottom = 3.dp)
                 .size(100.dp)
                 .clip(CircleShape)
                 .background(Color.Red)
@@ -32,10 +38,12 @@ fun CategoryCard(cat: Category) {
                 model = cat.img,
                 contentDescription = cat.nombre,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .size(70.dp)
             )
         }
-        Text(cat.nombre)
+        Text(
+            cat.nombre
+        )
     }
 }
 

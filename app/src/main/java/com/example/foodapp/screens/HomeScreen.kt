@@ -1,12 +1,16 @@
 package com.example.foodapp.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -16,10 +20,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.foodapp.R
 import com.example.foodapp.components.CategoryCard
 import com.example.foodapp.components.RestaurantCard
@@ -36,47 +43,82 @@ fun HomeScreen(paddingValues: PaddingValues) {
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
+            .padding(horizontal = 10.dp)
     ) {
-        // Header !! Saludo con nombre + Boton de logout
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
                 painter = painterResource(R.drawable.usercircle),
-                contentDescription = "Profile picture"
+                contentDescription = "Profile picture",
+                modifier = Modifier
+                    .padding(end = 7.dp)
+                    .size(35.dp)
             )
-            Text(text="Hola, $user")
+            Text(
+                text="Hola, $user",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.weight(1f))
             IconButton(
                 onClick = {}
             ) {
-                Icon(
+                Image(
                     painter = painterResource(R.drawable.signout),
-                    contentDescription = "Logout"
+                    contentDescription = "Logout",
+                    modifier = Modifier
+                        .size(30.dp)
                 )
             }
         }
         Text(
-            "Nuestras categorias"
+            "Nuestras categorias",
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 20.dp, bottom = 20.dp)
         )
-        // Lista de categorias !! Min = 5
-        LazyRow {
+        LazyRow (
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(horizontal = 10.dp)
+        ){
             items(categoryData.categories){ cat ->
                 CategoryCard(cat = cat)
             }
         }
         Text(
-            "Busca los mejores restaurantes"
+            "Busca los mejores restaurantes",
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 20.dp, bottom = 20.dp)
         )
-        LazyRow {
+        LazyRow (
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(horizontal = 10.dp)
+        ){
             items(restaurantData.restaurants){ res ->
                 RestaurantCard(res = res)
             }
         }
         Text(
-            "Nuestras mejores comidas"
+            "Nuestras mejores comidas",
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 20.dp, bottom = 20.dp)
         )
-        LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(horizontal = 10.dp),
+            modifier = Modifier
+                .padding(bottom = 20.dp)
+        ) {
             items(foodData.foods){ food ->
                 FoodCard(food = food)
             }
@@ -89,6 +131,6 @@ fun HomeScreen(paddingValues: PaddingValues) {
     showSystemUi = true
 )
 @Composable
-fun preview() {
-    HomeScreen(paddingValues = PaddingValues(25.dp))
+fun Preview() {
+    HomeScreen(paddingValues = PaddingValues(horizontal = 10.dp, vertical = 25.dp))
 }
