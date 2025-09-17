@@ -43,7 +43,7 @@ fun HomeScreen(paddingValues: PaddingValues) {
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
-            .padding(horizontal = 10.dp)
+            .padding(horizontal = 7.dp)
     ) {
         Row(
             modifier = Modifier
@@ -58,7 +58,7 @@ fun HomeScreen(paddingValues: PaddingValues) {
                     .size(35.dp)
             )
             Text(
-                text="Hola, $user",
+                text="Hola $user!",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
