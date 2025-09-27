@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +32,8 @@ fun RestaurantCard(res: Restaurant) {
             modifier = Modifier
                 .padding(bottom = 3.dp)
                 .size(100.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.White)
         ){
             AsyncImage(
                 model = res.img,
