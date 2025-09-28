@@ -57,6 +57,7 @@ fun HomeScreen(paddingValues: PaddingValues) {
                     .padding(end = 7.dp)
                     .size(35.dp)
             )
+
             Text(
                 text="Hola $user!",
                 fontSize = 24.sp,
